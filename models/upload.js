@@ -2,15 +2,30 @@ const sequelize = require("../db");
 
 
 module.exports = (sequelize, DataTypes) => {
-    const imageUpload = sequelize.define('upload', {
-        imageName: {
+    const upload = sequelize.define('upload', {
+        title: {
             type: DataTypes.STRING,
-            required: true
+            allowNull: false,
+            unique: true
         },
-       password: {
-           type: DataTypes.STRING,
-           allowNull: false
-       }
+        caption: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        image: {
+            type: DataTypes.JSON,
+            allowNull: true
+        },
+        author: {
+            type: DataTypes.STRING
+        },
+        owner: {
+            type: DataTypes.INTEGER
+        }
+
     })
-    return User;
+
+
+
+    return upload;
 }

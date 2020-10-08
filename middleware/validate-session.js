@@ -28,3 +28,5 @@ const validateSession = (req, res, next) => {
         });
     }
 };
+
+module.exports = validateSession;

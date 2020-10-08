@@ -7,10 +7,24 @@ const sequelize = new Sequelize('PA-server',
 
 sequelize.authenticate().then(
     function() {
-        console.log('Connected to database :)')
+        console.log('Connected to database');
     },
     function(err) {
         console.log(err);
     }
 );
+
+let Users = sequelize.import('./models/user');
+let Uploads = sequelize.import('./models/upload');
+
+Users.hasMany(Uploads, {
+    foreignKey: "owner",
+    constraints: true,
+  });
+  
+  Uploads.belongsTo(Users, {
+    foreignKey: "id",
+    constraints: true,
+  });
+
 module.exports = sequelize;

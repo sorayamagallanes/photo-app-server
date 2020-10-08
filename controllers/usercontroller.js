@@ -54,4 +54,16 @@ router.post('/login', function (req, res) {
     .catch(err => res.status(500).json({error: err}))
 });
 
+//find by username
+router.get("/:username", function (req, res) {
+    let username = req.params.username;
+    User.findAll({
+      where: { username: username },
+    })
+      .then((username) => res.status(200).json(username))
+      .catch((err) => res.status(500).json({ error: err }));
+  });
+
+ 
+
 module.exports = router;
