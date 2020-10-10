@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('PA-server', 
-'postgres', 'sapphoTlou2', {
-    host: 'localhost',
+const sequelize = new Sequelize(process.env.DATABASE_URL, 
+ {
+   
     dialect: 'postgres'
 });
 

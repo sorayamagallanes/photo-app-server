@@ -33,24 +33,7 @@ app.get('/api/images', async (req, res) => {
     res.send(publicIds);
 });
 
-// app.post('/api/upload', async (req, res) => {
-//     try {
-//         const fileStr = req.body.data;
-//         const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-//             upload_preset: 'dev_setups',
-//         });
-//         console.log(uploadResponse);n
-//         res.json({ msg: 'yaya' });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ err: 'Something went wrong' });
-//     }
-// });
 
-
-/**protected */
-// app.use(require('./middleware/validate-session'));
-// put that in upload controller ^^
-app.listen(3000, function() {
-    console.log('App listening on port 3000 uwu')
+app.listen(process.env.PORT, () => {
+    console.log(`App listening on port ${process.env.PORT} uwu`)
 })
