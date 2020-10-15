@@ -16,6 +16,7 @@ sequelize.authenticate().then(
 
 let Users = sequelize.import('./models/user');
 let Uploads = sequelize.import('./models/upload');
+let Images = sequelize.import('./models/imageModel');
 
 Users.hasMany(Uploads, {
     foreignKey: "owner",
@@ -23,8 +24,19 @@ Users.hasMany(Uploads, {
   });
   
   Uploads.belongsTo(Users, {
+    // foreignKey: "id",
+    constraints: true,
+  });
+
+  Uploads.hasMany(Images, {
+    foreignKey:"imageid",
+    constraints: true,
+  });
+  Images.belongsTo(Uploads, {
     foreignKey: "id",
     constraints: true,
   });
+
+
 
 module.exports = sequelize;
